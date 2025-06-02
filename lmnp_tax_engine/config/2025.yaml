@@ -1,0 +1,31 @@
+# LMNP rules – revenues 2025 (declaration 2026)
+
+micro_bic:
+  seuils:               # maximum gross rents to remain in micro-BIC
+    classique: 77_700            # Location meublée « classique » :contentReference[oaicite:0]{index=0}
+    tourisme_non_classe: 15_000  # Meublé de tourisme non classé :contentReference[oaicite:1]{index=1}
+    tourisme_classe: 77_700      # Meublé de tourisme classé / chambre d’hôtes :contentReference[oaicite:2]{index=2}
+  taux_abattement:      # forfait covering charges
+    classique: 0.50
+    tourisme_non_classe: 0.30
+    tourisme_classe: 0.50
+  abattement_minimum: 305        # € – CGI art. 50-0 (unchanged)
+
+reel_simplifie:                  # upper limit before bascule en réel normal
+  plafond_service: 254_000       # prestations de services (BIC) :contentReference[oaicite:3]{index=3}
+  plafond_fourniture_logement: 840_000
+
+regime_change:
+  lmp:
+    recettes_min: 23_000         # Condition 1 :contentReference[oaicite:4]{index=4}
+    compare_other_income: true   # Condition 2 : recettes > autres revenus
+
+social:
+  affiliation_courte_duree: 23_000   # URSSAF SSI when Airbnb > 23 k€ :contentReference[oaicite:5]{index=5}
+  affiliation_chambres_hotes: 6_028  # seuil 2024 for chambres d’hôtes :contentReference[oaicite:6]{index=6}
+
+amortissement:
+  article_39C_rule: "deductible_amort <= revenu_avant_amort"   # plafond – art 39 C :contentReference[oaicite:7]{index=7}
+
+deficit:
+  lmnp_report_years: 10          # deficits imputables sur 10 ans :contentReference[oaicite:8]{index=8}
