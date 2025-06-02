@@ -1,0 +1,11 @@
+# Virtual env
+.venv/
+# Byte-code & cache
+__pycache__/
+*.py[cod]
+# Test cache
+.pytest_cache/
+# Editors / OS
+*.swp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "lmnp-tax-engine"
+version = "0.1.0"
+description = "Python toolkit for French LMNP taxation, optimisation and forecasting"
+authors = ["HR <you@example.com>"]
+readme = "README.md"
+packages = [{ include = "lmnp_tax_engine", from = "." }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.6"
+pandas = "^2.2"
+numpy = "^1.26"
+typer = "^0.12"
+fastapi = "^0.111"
+uvicorn = {extras = ["standard"], version = "^0.30"}
+pyyaml = "^6.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1"
+hypothesis = "^6.99"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
