@@ -26,17 +26,16 @@ def calculate(
     cfg = load_config(year)
 
     if regime == "micro_bic":
-        abat_pct = cfg["micro_bic"]["taux_abattement"][property.classification]
-        from decimal import Decimal
-        abat_pct_dec = Decimal(str(abat_pct))
-        taxable_base = gross_rent * (Decimal("1") - abat_pct_dec)
+        abat_rate = cfg["micro_bic"]["taux_abattement"][property.classification]
+        abat_pct = Decimal(str(abat_rate))
+        taxable_base = gross_rent * (Decimal("1") - abat_pct)
         return RegimeResult(
             year=year,
             regime=regime,
             taxable_income=taxable_base,
             income_tax=Decimal(0),           # placeholder for now
             social_contributions=Decimal(0),
-            explanation=f"Abattement {abat_pct_dec:.0%} appliqué",
+            explanation=f"Abattement {abat_pct:.0%} appliqué ({property.classification})",
         )
 
     raise NotImplementedError(regime)
