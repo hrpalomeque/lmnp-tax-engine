@@ -27,9 +27,14 @@ def calculate(
 
     if regime == "micro_bic":
         abat_pct = cfg["micro_bic"]["taux_abattement"][property.classification]
+        abat_min = cfg["micro_bic"].get("abattement_minimum", 0)
         from decimal import Decimal
         abat_pct_dec = Decimal(str(abat_pct))
-        taxable_base = gross_rent * (Decimal("1") - abat_pct_dec)
+        abat_min_dec = Decimal(str(abat_min))
+        abattement = gross_rent * abat_pct_dec
+        if abattement < abat_min_dec:
+            abattement = abat_min_dec
+        taxable_base = gross_rent - abattement
         return RegimeResult(
             year=year,
             regime=regime,

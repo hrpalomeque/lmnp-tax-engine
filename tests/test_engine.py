@@ -20,3 +20,22 @@ def test_micro_bic_abattement_classique_2025():
         year=2025,
     )
     assert result.taxable_income == Decimal("10000")
+
+
+def test_micro_bic_abattement_minimum_2025():
+    """Abattement minimum 305 € when gross rent is low."""
+    prop = Property(
+        id="P2",
+        address="1 rue de la Loi, Paris",
+        acquisition_price=Decimal("150000"),
+        acquisition_date=date(2021, 1, 15),
+        classification="classique",
+    )
+    result = calculate(
+        property=prop,
+        gross_rent=Decimal("600"),
+        charges=Decimal("0"),
+        regime="micro_bic",
+        year=2025,
+    )
+    assert result.taxable_income == Decimal("295")
